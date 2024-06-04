@@ -1,0 +1,11 @@
+Allele_ID,Allele_frequency,Contained_mutations,Mut_effects,KO
+1,0.0322,6,"disruptive_inframe_deletion, splice_region_variant",False
+2,0.2257,"3, 6","disruptive_inframe_deletion, 5_prime_UTR_variant, intron_variant, splice_acceptor_variant, non_coding_transcript_variant, splice_region_variant, conservative_inframe_deletion",True
+3,0.089,"2, 6","disruptive_inframe_deletion, intron_variant, splice_acceptor_variant, splice_region_variant",True
+4,0.2043,"1, 6","disruptive_inframe_deletion, 5_prime_UTR_truncation, intron_variant, start_lost, splice_acceptor_variant, frameshift_variant, splice_region_variant, exon_loss_variant",True
+5,0.0198,[],WT,False
+6,0.0175,5,"start_lost, 5_prime_UTR_variant, frameshift_variant, splice_region_variant",True
+7,0.0144,"4, 7","5_prime_UTR_truncation, start_lost, intron_variant, splice_donor_variant, splice_region_variant, conservative_inframe_deletion, exon_loss_variant",True
+8,0.2028,"5, 7","5_prime_UTR_variant, intron_variant, start_lost, frameshift_variant, splice_donor_variant, splice_region_variant, conservative_inframe_deletion",True
+9,0.1944,"4, 8","5_prime_UTR_truncation, start_lost, intron_variant, frameshift_variant, splice_donor_variant, splice_region_variant, conservative_inframe_deletion, exon_loss_variant",True
+KO%,0.9480999999999999,,,False
