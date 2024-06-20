@@ -13,6 +13,8 @@ parser = argparse.ArgumentParser(description='Filter cells based on QC metrics')
 parser.add_argument("--input_file", type=Path, required=True, help="Input file")
 parser.add_argument("--output_file", type=Path, required=True, help="Output file with good-quality cells")
 parser.add_argument("--qc_violin_plot", type=Path, help="Path to save violin plot of QC metrics")
+parser.add_argument("--qc_scatter_plot", type=Path, help="Path to save scatter plot of QC metrics")
+parser.add_argument("--min_genes_thresh", type=float, help="Threshold for minimum number of cells")
 # TODO: Add the scatterplot path from snakemake rule so python can use it while executing the script
 # TODO: Add the parameter from snakemake so python can use it while executing the script
 
@@ -21,6 +23,7 @@ args = parser.parse_args()
 # Create directory for figures if one does not exist
 # NOTE: Unless you save the scatterplot elsewhere, you do not need to repeat for scatterplot
 args.qc_violin_plot.parent.mkdir(parents=True, exist_ok=True)
+args.qc_scatter_plot.parent.mkdir(parents=True, exist_ok=True)
 
 # Load input data
 adata = sc.read_h5ad(args.input_file)
@@ -43,9 +46,9 @@ adata.obs["n_genes"] = (adata.X > 0).sum(axis=1).A1
 
 # TODO: Edit the min_n_genes so that it uses your snakemake parameter instead of a hardcoded value
 # TODO: Edit the fraction_mito threshold so it filters everything above mean + 2*sd
-min_n_genes = 200
+min_n_genes = args.min_genes_thresh
 min_n_counts = 1000
-max_fraction_mito = 0.05
+max_fraction_mito = np.mean(adata.obs["fraction_mito"]) + 2 * np.std(adata.obs["fraction_mito"])#0.05
 
 # # # Filtering
 
@@ -81,4 +84,13 @@ plt.savefig(args.qc_violin_plot)
 
 # TODO: Add scatterplot with seaborn and save to location specified in snakemake rule
 # NOTE: Add the thresholds as horizontal and vertical lines to the plot
-
+fig, axes = plt.subplots(1, 3, figsize=(10, 5))
+sns.scatterplot(x=adata.obs["n_counts"], y=adata.obs["n_genes"], ax=axes[0])
+sns.scatterplot(x=adata.obs["fraction_mito"], y=adata.obs["n_genes"], ax=axes[1])
+sns.scatterplot(x=adata.obs["fraction_mito"], y=adata.obs["n_counts"], ax=axes[2])
+# axes[0].set_ylim(-100, 8000)
+# axes[1].set_ylim(-1000, 48000)
+# axes[2].set_ylim(-0.05, 0.55)
+fig.suptitle(f"Scatterplots for QC metrics, for {adata.obs['sample'].unique()[0]}")
+fig.tight_layout()
+plt.savefig(args.qc_scatter_plot)
