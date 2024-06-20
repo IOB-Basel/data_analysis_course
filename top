@@ -1,0 +1,54 @@
+[33mcommit 1d77f49d3bd3d3acde7caec9c50e3593f62db8b0[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Miklos <boldogkoim@gmail.com>
+Date:   Wed Jun 19 16:46:29 2024 +0200
+
+    session 3 everything
+
+[33mcommit 03b950de237e5a0ec5f2b2708792dd2f0626460d[m
+Author: Miklos <boldogkoim@gmail.com>
+Date:   Wed Jun 19 16:22:09 2024 +0200
+
+    Session 3 hw
+
+[33mcommit 76cd80b5419cf5ebdd9d9648e35ff9f15b5f3000[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: e78fe28 a6d425e
+Author: Miklos <boldogkoim@gmail.com>
+Date:   Thu Jun 6 10:00:38 2024 +0200
+
+    Merge branch 'main' of github.com:boldogkoim/data_analysis_course into main
+
+[33mcommit e78fe28e2e595e568d227c36984d85c00e625dc3[m
+Author: Miklos <boldogkoim@gmail.com>
+Date:   Thu Jun 6 09:55:06 2024 +0200
+
+    message
+
+[33mcommit 7564dc990aef45827ea5456fdfc6bbce1378aa1d[m
+Author: Miklos <boldogkoim@gmail.com>
+Date:   Tue Jun 4 11:46:17 2024 +0200
+
+    Please work now!
+
+[33mcommit 3e164c21800bdc99b7e9d5fe5a58f0067cbad27e[m[33m ([m[1;31mupstream/main[m[33m)[m
+Author: duyguk <duygu.sigurdsson@iob.ch>
+Date:   Wed Jun 5 16:04:08 2024 +0200
+
+    Add materials for session 2
+
+[33mcommit a6d425e10302487921b8675b1d261968e0e5ad31[m
+Author: Miklos <boldogkoim@gmail.com>
+Date:   Tue Jun 4 11:46:17 2024 +0200
+
+    Please work now!
+
+[33mcommit 5e005e284320405ad722eee9df27e2b31fbb5cda[m
+Author: Sarah Nadeau <sarahnadeau266@gmail.com>
+Date:   Tue May 28 16:50:54 2024 +0200
+
+    add materials for git & conda practice
+
+[33mcommit 4e3cc841c4c00a1b0858541055139b4637c6655f[m
+Author: Sarah Nadeau <sarahnadeau266@gmail.com>
+Date:   Fri May 24 09:53:52 2024 +0200
+
+    add README

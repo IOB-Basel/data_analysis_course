@@ -1,0 +1,5 @@
+data/*
+session2/input_data/*
+session2/.snakemake/*
+nbks/.Rhistory
+.vscode*
