@@ -1,8 +1,0 @@
-name: pandas_env2
-channels:
-  - conda-forge
-dependencies:
-  - python>3
-  - jupyter
-  - pandas
-  - xlrd
