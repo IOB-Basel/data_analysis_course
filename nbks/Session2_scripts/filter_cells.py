@@ -13,6 +13,9 @@ parser = argparse.ArgumentParser(description='Filter cells based on QC metrics')
 parser.add_argument("--input_file", type=Path, required=True, help="Input file")
 parser.add_argument("--output_file", type=Path, required=True, help="Output file with good-quality cells")
 parser.add_argument("--qc_violin_plot", type=Path, help="Path to save violin plot of QC metrics")
+parser.add_argument("--min_n_genes", type=int, help='Help me!')
+parser.add_argument("--scatter", type=Path, help="Path to save scatter plot")
+
 # TODO: Add the scatterplot path from snakemake rule so python can use it while executing the script
 # TODO: Add the parameter from snakemake so python can use it while executing the script
 
@@ -21,6 +24,7 @@ args = parser.parse_args()
 # Create directory for figures if one does not exist
 # NOTE: Unless you save the scatterplot elsewhere, you do not need to repeat for scatterplot
 args.qc_violin_plot.parent.mkdir(parents=True, exist_ok=True)
+args.scatter.parent.mkdir(parents=True, exist_ok=True)
 
 # Load input data
 adata = sc.read_h5ad(args.input_file)
@@ -43,9 +47,14 @@ adata.obs["n_genes"] = (adata.X > 0).sum(axis=1).A1
 
 # TODO: Edit the min_n_genes so that it uses your snakemake parameter instead of a hardcoded value
 # TODO: Edit the fraction_mito threshold so it filters everything above mean + 2*sd
-min_n_genes = 200
+min_n_genes = args.min_n_genes
 min_n_counts = 1000
-max_fraction_mito = 0.05
+max_fraction_mito = adata.obs['fraction_mito'].mean() + 2 * adata.obs['fraction_mito'].std()
+
+
+
+
+
 
 # # # Filtering
 
@@ -78,7 +87,11 @@ axes[2].set_ylim(-0.05, 0.55)
 fig.suptitle(f"QC metrics for {adata.obs['sample'].unique()[0]}")
 fig.tight_layout()
 plt.savefig(args.qc_violin_plot)
+plt.close()
 
+fig, ax=plt.subplots()
+sns.scatterplot(x = adata.obs['n_genes'], y = adata.obs['n_counts'], ax=ax)
+plt.savefig(args.scatter)
 # TODO: Add scatterplot with seaborn and save to location specified in snakemake rule
 # NOTE: Add the thresholds as horizontal and vertical lines to the plot
 
