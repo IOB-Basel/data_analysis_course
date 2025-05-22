@@ -1,1 +1,16 @@
 session3/data*
+
+# Ignore everything
+**
+# But don't ignore the .gitignore file itself
+!.gitignore
+# Explicitly allow selected directories (add a trailing slash for directories)
+!envs/
+!envs/**/*.yaml
+!session2/
+!session2/**
+!session3/
+!session3/**/*.ipynb
+!session4/
+!session4/**/*.ipynb
+
