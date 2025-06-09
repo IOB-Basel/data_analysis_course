@@ -1,0 +1,16 @@
+name: session2
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - matplotlib=3.10.3
+  - matplotlib-base=3.10.3
+  - numba=0.61.2
+  - numpy=2.2.6
+  - pandas=2.2.3
+  - python=3.13.3
+  - scanpy=1.11.2
+  - seaborn=0.13.2
+  - seaborn-base=0.13.2
+  - ipykernel=6.29.5
